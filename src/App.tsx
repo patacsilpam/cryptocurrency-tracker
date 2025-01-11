@@ -1,7 +1,17 @@
+import { useCallback, useMemo } from "react";
+
 function App() {
+  const memoizedValue = useMemo(() => {
+    return "Hello World";
+  }, []);
+  const handleClick = useCallback(() => {
+    console.log("clicked");
+    console.log(memoizedValue);
+  }, []);
+
   return (
     <>
-      <h1 className="text-red-500">Hello wORLS</h1>
+      <button onClick={handleClick}>Click me</button>
     </>
   );
 }
