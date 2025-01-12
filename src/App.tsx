@@ -1,17 +1,13 @@
-import { useCallback, useMemo } from "react";
-
+import { navItems } from "./data/globals";
+import { Navbar } from "./components/layout/Navbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
-  const memoizedValue = useMemo(() => {
-    return "Hello World";
-  }, []);
-  const handleClick = useCallback(() => {
-    console.log("clicked");
-    console.log(memoizedValue);
-  }, []);
-
   return (
     <>
-      <button onClick={handleClick}>Click me</button>
+      <Router>
+        <Navbar navItems={navItems} />
+        <Routes></Routes>
+      </Router>
     </>
   );
 }
