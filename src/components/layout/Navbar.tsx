@@ -16,7 +16,7 @@ export function Navbar({
   return (
     <nav className="py-7">
       <div className="flex flex-row items-center justify-around">
-        <h1>Crypto Daily</h1>
+        <h1 className="text-xl font-bold text-gray-700">Crypto Daily</h1>
         <div>
           <ul className="md:flex hidden flex-row">
             {navItems.map((item) => {
@@ -51,7 +51,10 @@ export function Navbar({
           <Menu className=" hover:cursor-pointer" />
         </button>
         {isOpen && (
-          <MobileNavbar className="lg:hidden fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-white z-50" />
+          <MobileNavbar
+            navItems={navItems}
+            className="lg:hidden text-left fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-gray-100 z-50"
+          />
         )}
       </div>
     </nav>
