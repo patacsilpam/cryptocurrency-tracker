@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function ButtonLink({
   children,
   className,
@@ -8,8 +10,8 @@ export function ButtonLink({
   link?: string;
 }) {
   return (
-    <a href={link} className={className}>
+    <Link to={link ?? ""} className={className}>
       {children}
-    </a>
+    </Link>
   );
 }
