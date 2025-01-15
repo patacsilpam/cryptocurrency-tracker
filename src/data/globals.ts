@@ -2,26 +2,26 @@ export const navItems = [
   {
     id: 1,
     label: "Home",
-    href: "#",
+    href: "/  ",
   },
   {
     id: 2,
     label: "Market Trends",
-    href: "#",
+    href: "/market-trends",
   },
   {
     id: 3,
     label: "Trends and Analysis",
-    href: "#",
+    href: "/trends-and-analysis",
   },
   {
     id: 4,
     label: "News",
-    href: "#",
+    href: "/news",
   },
   {
     id: 5,
     label: "About us",
-    href: "#",
+    href: "/about-us",
   },
 ];
