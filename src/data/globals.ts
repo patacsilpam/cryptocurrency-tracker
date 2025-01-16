@@ -1,26 +1,21 @@
 export const navItems = [
   {
     id: 1,
-    label: "Home",
-    href: "/  ",
+    label: "Cryptocurrencies",
+    href: "/cryptocurrencies",
   },
   {
     id: 2,
     label: "Market Trends",
-    href: "/market-trends",
-  },
-  {
-    id: 3,
-    label: "Trends and Analysis",
     href: "/trends-and-analysis",
   },
   {
-    id: 4,
-    label: "News",
-    href: "/news",
+    id: 3,
+    label: "More Info",
+    href: "/more-info",
   },
   {
-    id: 5,
+    id: 4,
     label: "About us",
     href: "/about-us",
   },
