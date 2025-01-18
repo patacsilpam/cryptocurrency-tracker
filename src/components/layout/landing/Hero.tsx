@@ -1,9 +1,9 @@
 import heroImage from "../../assets/react.svg";
-import { ButtonLink } from "../ui/ButtonLink";
+import { ButtonLink } from "../../common/ButtonLink";
 
 export const Hero = () => {
   return (
-    <section className="flex flex-col md:flex-row justify-around items-center min-h-screen lg:-mt-10">
+    <section className="flex flex-col md:flex-row justify-around items-center min-h-screen ">
       <section className="w-full md:w-1/2 space-y-4">
         <strong className="text-3xl md:text-4xl lg:text-5xl font-bold">
           Stay Ahead in the Crypto Market Today

@@ -1,22 +1,22 @@
 export const navItems = [
   {
     id: 1,
-    label: "Cryptocurrencies",
-    href: "/cryptocurrencies",
+    label: "Features",
+    href: "/features",
   },
   {
     id: 2,
-    label: "Market Trends",
-    href: "/trends-and-analysis",
+    label: "How it works",
+    href: "/how-it-works",
   },
   {
     id: 3,
-    label: "More Info",
-    href: "/more-info",
+    label: "Contact",
+    href: "/contact",
   },
   {
     id: 4,
-    label: "About us",
-    href: "/about-us",
+    label: "FAQs",
+    href: "/FAQs",
   },
 ];
