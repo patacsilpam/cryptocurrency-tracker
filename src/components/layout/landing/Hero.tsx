@@ -1,3 +1,5 @@
+{
+  /*
 import heroImage from "../../assets/react.svg";
 import { ButtonLink } from "../../common/ButtonLink";
 
@@ -38,3 +40,6 @@ export const Hero = () => {
     </section>
   );
 };
+  
+*/
+}
