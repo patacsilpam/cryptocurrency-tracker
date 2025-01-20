@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ButtonLink } from "../../common/ButtonLink";
+import { ButtonLink } from "./ButtonLink";
 export const MobileNavbar = ({
   className,
   navItems,
@@ -21,7 +21,7 @@ export const MobileNavbar = ({
       <div className="flex flex-col gap-2 p-3">
         <ButtonLink
           className="border text-center text-sm p-2 px-4 rounded-lg  w-full mr-2"
-          link="/get-started"
+          link="login"
         >
           Login
         </ButtonLink>

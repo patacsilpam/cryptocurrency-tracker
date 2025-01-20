@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ButtonLink } from "../../common/ButtonLink";
+import { ButtonLink } from "./ButtonLink";
 import { Menu } from "lucide-react";
 import { MobileNavbar } from "./MobileNavbar";
 import { useState } from "react";

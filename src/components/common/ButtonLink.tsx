@@ -7,10 +7,10 @@ export function ButtonLink({
 }: {
   children: React.ReactNode;
   className?: string;
-  link?: string;
+  link: string;
 }) {
   return (
-    <Link to={link ?? ""} className={className}>
+    <Link to={link} className={className}>
       {children}
     </Link>
   );
