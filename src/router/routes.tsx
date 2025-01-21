@@ -10,11 +10,7 @@ export const routes = [
   {
     //public routes with landing page layout
     path: "/",
-    element: <LandingLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "#features", element: <Features /> },
-    ],
+    element: <Home />,
   },
 ];
 export const router = createBrowserRouter(routes);

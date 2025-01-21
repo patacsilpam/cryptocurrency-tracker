@@ -5,12 +5,5 @@ import { Navbar } from "../../common/Navbar";
 import { Header } from "./Header";
 
 export function LandingLayout() {
-  return (
-    <>
-      <Navbar navItems={navItems} />
-      <main className="">
-        <Outlet />
-      </main>
-    </>
-  );
+  return <Navbar navItems={navItems} />;
 }

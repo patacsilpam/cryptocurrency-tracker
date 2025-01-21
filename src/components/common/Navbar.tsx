@@ -3,6 +3,7 @@ import { ButtonLink } from "./ButtonLink";
 import { Menu } from "lucide-react";
 import { MobileNavbar } from "./MobileNavbar";
 import { useState } from "react";
+import { ScrollToButton } from "./ScrollToButton";
 
 export function Navbar({
   navItems,
@@ -22,10 +23,10 @@ export function Navbar({
         <ul className="md:flex hidden flex-row ">
           {navItems.map((item) => {
             return (
-              <li key={item.id} className="text-sm">
-                <Link to={item.href} className="mx-7">
+              <li key={item.id} className="text-sm mx-7">
+                <ScrollToButton section={item.href}>
                   {item.label}
-                </Link>
+                </ScrollToButton>
               </li>
             );
           })}
