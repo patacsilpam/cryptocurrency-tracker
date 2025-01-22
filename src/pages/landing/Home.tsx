@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
 import { Navbar } from "../../components/common/Navbar";
-import { LandingLayout } from "../../components/layout/landing/LandingLayout";
-import { navItems } from "../../data/globals";
-import { Features } from "./Features";
+import { EmailSubscription } from "../../components/landing/EmailSubscription";
+import { Features } from "../../components/landing/Features";
 import { Hero } from "../../components/landing/Hero";
+import { HowItWorks } from "../../components/landing/HowItWorks";
+import { featureItems, navItems } from "../../data/globals";
 
 export function Home() {
   return (
     <>
-      <LandingLayout />
+      <Navbar navItems={navItems} />
       <Hero />
-      <Features />
+      <Features featureItems={featureItems} />
+      <HowItWorks />
+      <EmailSubscription />
     </>
   );
 }
