@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ButtonLink } from "./ButtonLink";
 import { Menu } from "lucide-react";
 import { MobileNavbar } from "./MobileNavbar";
@@ -15,7 +14,7 @@ export function Navbar({
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="flex md:flex-row  items-center justify-between max-w-7xl w-full mx-28 py-5">
+    <nav className="flex md:flex-row  items-center justify-between max-w-7xl w-full py-5">
       <div>
         <h1 className="text-xl font-bold ">CryptoDaily</h1>
       </div>
@@ -49,7 +48,7 @@ export function Navbar({
       {isOpen && (
         <MobileNavbar
           navItems={navItems}
-          className="lg:hidden text-left fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-[#0F0E0E]  z-50"
+          className="lg:hidden text-left fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-[#0F0E0E] z-50"
         />
       )}
     </nav>
