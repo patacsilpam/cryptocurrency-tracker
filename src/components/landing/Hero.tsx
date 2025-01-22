@@ -4,7 +4,10 @@ import { Rectangle } from "../common/Rectangle";
 
 export const Hero = () => {
   return (
-    <section className="flex flex-col justify-center min-h-screen mx-auto text-justify md:text-center max-w-3xl space-y-4 ">
+    <section
+      id="home"
+      className="flex flex-col justify-center min-h-screen mx-auto text-justify md:text-center max-w-3xl space-y-4 "
+    >
       <section className="space-y-3">
         <h1 className="text-3xl md:text-4xl lg:text-6xl font-medium -mt-10 text-[#d9dadc]">
           Stay Ahead in the Crypto Market Today
