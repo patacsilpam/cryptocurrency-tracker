@@ -3,6 +3,7 @@ import { EmailSubscription } from "../../components/landing/EmailSubscription";
 import { Features } from "../../components/landing/Features";
 import { Hero } from "../../components/landing/Hero";
 import { HowItWorks } from "../../components/landing/HowItWorks";
+import { TrendingCoin } from "../../components/layout/landing/TrendingCoin";
 import { featureItems, navItems } from "../../data/globals";
 
 export function Home() {
@@ -12,6 +13,7 @@ export function Home() {
       <Hero />
       <Features featureItems={featureItems} />
       <HowItWorks />
+      <TrendingCoin />
       <EmailSubscription />
     </>
   );

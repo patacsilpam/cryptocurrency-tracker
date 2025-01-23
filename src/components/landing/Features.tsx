@@ -1,3 +1,4 @@
+import { FetchCoins } from "../../hooks/fetch";
 export function Features({
   featureItems,
 }: {
