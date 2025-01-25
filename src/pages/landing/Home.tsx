@@ -12,8 +12,9 @@ export function Home() {
       <Navbar navItems={navItems} />
       <Hero />
       <Features featureItems={featureItems} />
-      <HowItWorks />
+
       <TrendingCoin />
+      <HowItWorks />
       <EmailSubscription />
     </>
   );
