@@ -1,12 +1,12 @@
 export function Features({
   featureItems,
 }: {
-  featureItems: Array<{
+  featureItems: {
     id: number;
-    icon: string; // Optional JSX.Element for the icon
+    icon: JSX.Element; // Optional JSX.Element for the icon
     label: string;
     description: string;
-  }>;
+  }[];
 }) {
   return (
     <section id="features" className="flex flex-col space-y-12 max-h-fit py-10">
