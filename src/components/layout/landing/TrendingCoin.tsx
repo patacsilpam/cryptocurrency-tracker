@@ -78,7 +78,7 @@ export function TrendingCoin() {
         <div className="flex flex-col">
           <Table>
             <TableCaption>Trending Coins</TableCaption>
-            <TableHeader>
+            <TableHeader style={{ pointerEvents: "none" }}>
               <TableRow>
                 <TableHead>#</TableHead>
                 <TableHead className="w-[300px]">Coin</TableHead>
