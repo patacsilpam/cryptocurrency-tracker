@@ -7,5 +7,9 @@ export interface Coin {
   data: {
     price: number;
     market_cap: string;
+    sparkline: string;
+    price_change_percentage_24h: {
+      usd: number;
+    };
   };
 }

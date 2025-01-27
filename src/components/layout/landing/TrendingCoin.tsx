@@ -6,7 +6,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -22,6 +21,10 @@ export interface CoinResponse {
       data: {
         price: number;
         market_cap: string;
+        sparkline: string;
+        price_change_percentage_24h: {
+          usd: number;
+        };
       };
     };
   }[];
@@ -45,7 +48,6 @@ export function TrendingCoin() {
           throw new Error(`Response status:${response.status}`);
         }
         const data: CoinResponse = await response.json();
-
         setTrendingCoins(
           data.coins.map((coin) => ({
             id: coin.item.id,
@@ -56,6 +58,10 @@ export function TrendingCoin() {
             data: {
               price: coin.item.data.price,
               market_cap: coin.item.data.market_cap,
+              sparkline: coin.item.data.sparkline,
+              price_change_percentage_24h: {
+                usd: coin.item.data.price_change_percentage_24h.usd,
+              },
             },
           }))
         );
@@ -78,6 +84,8 @@ export function TrendingCoin() {
                 <TableHead className="w-[300px]">Coin</TableHead>
                 <TableHead>Price</TableHead>
                 <TableHead>Market Cap</TableHead>
+                <TableHead>24H Price Change</TableHead>
+                <TableHead>Chart</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -91,6 +99,24 @@ export function TrendingCoin() {
                   </TableCell>
                   <TableCell>{formattedPrice(item.data.price)}</TableCell>
                   <TableCell>{item.data.market_cap}</TableCell>
+                  <TableCell>
+                    <span
+                      className={`${
+                        item.data.price_change_percentage_24h.usd < 0
+                          ? "text-red-500"
+                          : "text-green-500"
+                      } font-medium`}
+                    >
+                      {item.data.price_change_percentage_24h.usd.toFixed(2)}%
+                    </span>
+                  </TableCell>
+                  <TableCell>
+                    <img
+                      src={item.data.sparkline}
+                      alt={`${item.name} chart`}
+                      className="h-7"
+                    />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
