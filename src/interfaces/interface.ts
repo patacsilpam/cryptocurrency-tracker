@@ -33,3 +33,29 @@ export interface CoinResponse {
     };
   }[];
 }
+
+export interface NFT {
+  id: string;
+  name: string;
+  symbol: string;
+  thumb: string;
+  data: {
+    floor_price: number;
+    floor_price_in_usd_24h_percentage_change: string;
+    sparkline: string;
+  };
+}
+
+export interface NFTResponse {
+  nfts: {
+    id: string;
+    name: string;
+    symbol: string;
+    thumb: string;
+    data: {
+      floor_price: number;
+      floor_price_in_usd_24h_percentage_change: string;
+      sparkline: string;
+    };
+  }[];
+}
