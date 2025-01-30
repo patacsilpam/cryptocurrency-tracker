@@ -1,5 +1,6 @@
 import { TrendingCryptoCoin } from "../../landing/TrendingCryptoCoin";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../common/Tabs";
+import { NFTs } from "../../landing/Nfts";
 
 export function TrendingCoin() {
   return (
@@ -15,7 +16,7 @@ export function TrendingCoin() {
               <TrendingCryptoCoin />
             </TabsContent>
             <TabsContent value="trending-nft">
-              Change your password here.
+              <NFTs />
             </TabsContent>
           </Tabs>
         </div>
