@@ -76,12 +76,15 @@ export function NFTs() {
             <TableCell>
               <span
                 className={`${
-                  +item.data.floor_price_in_usd_24h_percentage_change < 0
+                  Number(item.data.floor_price_in_usd_24h_percentage_change) < 0
                     ? "text-red-500"
                     : "text-green-500"
                 } font-medium`}
               >
-                {item.data.floor_price_in_usd_24h_percentage_change}
+                {Number(
+                  item.data.floor_price_in_usd_24h_percentage_change
+                ).toFixed(2)}
+                %
               </span>
             </TableCell>
             <TableCell>
