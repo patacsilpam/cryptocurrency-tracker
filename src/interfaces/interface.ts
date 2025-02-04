@@ -102,3 +102,11 @@ export interface NFT extends BaseAsset {
 export interface NFTResponse {
   nfts: NFT[];
 }
+
+//interface for testimonies
+export interface Testimony {
+  id: number;
+  name: string;
+  role: string;
+  testimony: [];
+}
