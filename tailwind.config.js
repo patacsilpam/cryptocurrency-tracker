@@ -4,14 +4,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      animation: {
-        scroll: "scroll 20s linear infinite",
-      },
       keyframes: {
-        scroll: {
-          "0%": { transform: "translateY(1%)" },
-          "100%": { transform: "translateY(-60%)" }, // Scrolls halfway (since content is duplicated)
+        marquee: {
+          "0%": { transform: "translateY(0%)" },
+          "100%": { transform: "translateY(-100%)" },
         },
+        marquee2: {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 25s linear infinite",
+        marquee2: "marquee2 25s linear infinite",
       },
       borderRadius: {
         lg: "var(--radius)",
