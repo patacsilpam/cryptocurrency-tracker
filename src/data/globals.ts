@@ -81,7 +81,7 @@ export const testimonialsItem = [
   },
   //Testimonies for Beginners & Casual Users
   {
-    category: " Beginners & Casual Users",
+    category: "Beginners & Casual Users",
     testimonies: [
       {
         id: 1,
