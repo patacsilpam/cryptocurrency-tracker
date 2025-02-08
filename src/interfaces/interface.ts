@@ -105,8 +105,12 @@ export interface NFTResponse {
 
 //interface for testimonies
 export interface Testimony {
-  id: number;
-  name: string;
-  role: string;
-  testimony: [];
+  category: string;
+  testimonies: {
+    id: number;
+    name: string;
+    role: string;
+    testimony: string;
+    profile: string;
+  }[];
 }
