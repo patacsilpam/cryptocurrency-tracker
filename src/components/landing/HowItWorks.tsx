@@ -1,7 +1,7 @@
 export function HowItWorks() {
   return (
     <>
-      <div className="mx-auto">
+      <div className="mx-auto py-10">
         <h1 className="text-4xl font-bold py-5 text-center">How It Works</h1>
         {/*this is a sample video, it's one of my fave from youtube. If you think I plagarize it, actually no. */}
         <iframe
