@@ -13,6 +13,7 @@ export function TestimonialCard({ userCategory }: { userCategory: string }) {
               <CardContent className="flex flex-row gap-4">
                 <Avatar>
                   <AvatarImage
+                    loading="lazy"
                     src={testimony.profile}
                     className="h-14 w-14 object-cover rounded-full"
                   />
