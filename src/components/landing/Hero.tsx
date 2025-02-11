@@ -1,4 +1,3 @@
-import heroImage from "../../../assets/react.svg";
 import { ButtonLink } from "../common/ButtonLink";
 import { Rectangle } from "../common/Rectangle";
 

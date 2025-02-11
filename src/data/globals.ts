@@ -1,9 +1,6 @@
 import { Clock, ChartNoAxesCombined, BetweenVerticalEnd } from "lucide-react";
 import { Testimony } from "../interfaces/interface";
 import React from "react";
-import Crypto1 from "../../assets/images/landing/profile-pic/crypto-1.jpg";
-import Crypto2 from "../../assets/images/landing/profile-pic/crypto-2.jpg";
-import Crypto3 from "../../assets/images/landing/profile-pic/crypto-3.jpg";
 export const navItems = [
   {
     id: 1,
