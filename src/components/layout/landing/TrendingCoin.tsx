@@ -1,6 +1,6 @@
-import { TrendingCryptoCoin } from "../../landing/TrendingCryptoCoin";
+import { TrendingCryptoCoin } from "./TrendingCryptoCoin";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../common/Tabs";
-import { NFTs } from "../../landing/Nfts";
+import { NFTs } from "./Nfts";
 
 export function TrendingCoin() {
   return (
