@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../common/Table";
+} from "../../components/common/Table";
 import { useEffect, useState } from "react";
 import { CoinResponse, Coin } from "../../interfaces/interface";
 import { formattedPrice } from "../../utils/utils";
