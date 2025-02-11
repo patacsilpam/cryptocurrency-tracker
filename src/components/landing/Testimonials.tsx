@@ -29,10 +29,13 @@ export const Testimonials = () => {
       >
         {isMobile ? (
           /* Mobile View: Single-column scrolling marquee */
-          <div className="relative w-full overflow-hidden h-[500px] md:h-screen">
+          <div className="relative w-full ">
             {testimonialsItem.concat(testimonialsItem).map((item, index) => (
-              <div className="relative flex flex-col space-y-8 animate-marquee">
-                <TestimonialCard key={index} userCategory={item.category} />
+              <div
+                key={index}
+                className="relative  flex flex-col space-y-8 animate-marquee"
+              >
+                <TestimonialCard userCategory={item.category} />
               </div>
             ))}
           </div>
