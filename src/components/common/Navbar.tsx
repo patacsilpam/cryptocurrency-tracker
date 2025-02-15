@@ -1,9 +1,13 @@
 import { ButtonLink } from "./ButtonLink";
 import { Menu } from "lucide-react";
 import { MobileNavbar } from "./MobileNavbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ScrollToButton } from "./ScrollToButton";
-
+import { createClient } from "@supabase/supabase-js";
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 export function Navbar({
   navItems,
 }: {
@@ -12,6 +16,15 @@ export function Navbar({
   const [isOpen, setIsOpen] = useState(false);
   const toggleMobileNavbar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const btnSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin, // Correct: Redirect to your app's URL
+      },
+    });
   };
   return (
     <nav className="flex md:flex-row  items-center justify-between max-w-7xl w-full py-5">
@@ -32,6 +45,7 @@ export function Navbar({
         </ul>
       </div>
       <div className="md:block hidden">
+        <button onClick={btnSignIn}>Get Started</button>
         <ButtonLink
           className="border  text-center text-sm p-2 px-4 rounded-lg max-w-20 w-full mr-2"
           link="/get-started"
