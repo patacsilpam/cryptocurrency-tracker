@@ -20,9 +20,10 @@ export const Testimonials = () => {
 
   return (
     <div className=" py-10 space-y-3">
-      <h1 className="text-2xl font-medium">Loved by thousands of people</h1>
-      <p>Here's what some of our users have to say about Crypto Daily.</p>
-
+      <div className="text-center space-y-2 py-4">
+        <h1 className="text-2xl font-medium">Loved by thousands of people</h1>
+        <p>Here's what some of our users have to say about Crypto Daily.</p>
+      </div>
       <div
         className="h-screen md:h-[700px] grid md:grid-cols-3 grid-cols-1 gap-x-20 
           [mask-image:_linear-gradient(to_top,transparent_0,_black_128px,_black_calc(100%-20px),transparent_100%)]"

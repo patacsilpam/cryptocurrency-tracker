@@ -18,9 +18,9 @@ export function GoogleSignin() {
   return (
     <button
       onClick={signIn}
-      className="border text-center text-sm p-2 px-4 rounded-lg w-full md:w-[130px] mr-2"
+      className="border text-center text-sm p-2 px-4 rounded-lg w-full  mr-2"
     >
-      Get Started
+      Sign in with Google
     </button>
   );
 }

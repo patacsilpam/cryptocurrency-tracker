@@ -33,7 +33,12 @@ export function Navbar({
         </ul>
       </div>
       <div className="md:block hidden">
-        <GoogleSignin />
+        <ButtonLink
+          link="/auth/login"
+          className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg w-[150px] mr-2"
+        >
+          Sign In
+        </ButtonLink>
       </div>
       <button
         onClick={toggleMobileNavbar}
