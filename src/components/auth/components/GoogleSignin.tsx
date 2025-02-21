@@ -1,10 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/config/supabaseClient";
 import Google from "@/assets/icons/google.png";
 export function GoogleSignin() {
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_ANON_KEY
-  );
   const signIn = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
