@@ -1,9 +1,8 @@
 import { ButtonLink } from "./ButtonLink";
 import { Menu } from "lucide-react";
 import { MobileNavbar } from "./MobileNavbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ScrollToButton } from "./ScrollToButton";
-import { GoogleSignin } from "../auth/components/GoogleSignin";
 export function Navbar({
   navItems,
 }: {
@@ -37,7 +36,13 @@ export function Navbar({
           link="/auth/login"
           className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg w-[150px] mr-2"
         >
-          Sign In
+          Login
+        </ButtonLink>
+        <ButtonLink
+          link="/auth/register"
+          className="bg-white text-black  text-center  font-medium p-2 px-4 rounded-lg w-[150px] mr-2"
+        >
+          Sign Up
         </ButtonLink>
       </div>
       <button
