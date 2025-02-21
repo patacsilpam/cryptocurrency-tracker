@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ButtonLink } from "./ButtonLink";
-import { GoogleSignin } from "../auth/components/GoogleSignin";
 
 export const MobileNavbar = ({
   className,
@@ -21,7 +20,12 @@ export const MobileNavbar = ({
         })}
       </ul>
       <div className="flex flex-col gap-2 p-3">
-        <GoogleSignin />
+        <ButtonLink
+          link="/auth/login"
+          className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg w-full mr-2"
+        >
+          Sign in
+        </ButtonLink>
       </div>
     </div>
   );
