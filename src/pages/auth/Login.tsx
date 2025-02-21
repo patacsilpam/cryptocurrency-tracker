@@ -12,7 +12,7 @@ export function Login() {
         </h1>
         {/*Google Sign in */}
         <div className="w-full space-y-4 mt-5">
-          <GoogleSignin />
+          <GoogleSignin>Sign in with Google</GoogleSignin>
           <div className="flex items-center w-full">
             <hr className="flex-grow border-gray-300" />
             <span className="px-3 text-gray-500 text-sm">
