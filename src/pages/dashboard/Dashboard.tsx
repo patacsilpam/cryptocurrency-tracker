@@ -2,11 +2,18 @@
 
 import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
 import { SidebarInset } from "@/components/common/Sidebar";
-
+import { Button } from "@/components/common/Button";
+import { supabase } from "@/config/supabaseClient";
 export function Dashboard() {
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+  }
   return (
     <div className="flex h-screen overflow-hidden">
       <AppSidebar />
+      <Button type="button" onClick={signOut}>
+        Sign out
+      </Button>
       <SidebarInset className="flex flex-col flex-1">
         <main className="flex-1 overflow-y-auto p-4">
           <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
