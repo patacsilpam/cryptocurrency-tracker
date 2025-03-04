@@ -13,7 +13,7 @@ import {
 } from "@/components/common/Sidebar";
 
 const menuItems = [
-  { icon: Home, label: "Dashboard", href: "/" },
+  { icon: Home, label: "Dashboard", href: "/dashboard" },
   { icon: BarChart2, label: "Analytics", href: "/analytics" },
   { icon: Users, label: "Customers", href: "/customers" },
   { icon: Settings, label: "Settings", href: "/settings" },
