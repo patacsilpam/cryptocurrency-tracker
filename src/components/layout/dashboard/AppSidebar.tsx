@@ -91,7 +91,7 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={item.isActive}
-                    className="hover:bg-sidebar-primary m-0 w-full"
+                    className=" m-0 w-full"
                   >
                     <a href={item.url}>
                       <item.icon className="size-4" />
