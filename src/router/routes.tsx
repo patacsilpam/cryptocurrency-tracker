@@ -1,8 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Home } from "../pages/landing/Home";
-import Dashboard from "../pages/dashboard/Dashboard";
-import { News } from "../pages/dashboard/News";
-import { CoinDetails } from "../pages/dashboard/CoinDetails";
+import { Dashboard } from "@/pages/dashboard/page";
+import { News } from "@/pages/news/page";
 import { Login } from "@/pages/auth/Login";
 import { Register } from "@/pages/auth/Register";
 import { useEffect, useState } from "react";
@@ -58,14 +57,6 @@ export const routes = [
     element: (
       <PrivateRoute>
         <News />
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: "/coin-details",
-    element: (
-      <PrivateRoute>
-        <CoinDetails />
       </PrivateRoute>
     ),
   },
