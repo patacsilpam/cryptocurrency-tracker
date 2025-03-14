@@ -4,6 +4,7 @@ import {
   SidebarInset,
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
+import { useEffect } from "react";
 
 export function Dashboard({ children }: { children: React.ReactNode }) {
   return (
@@ -19,8 +20,10 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50"></div>
+            <div className="aspect-video rounded-xl bg-muted/50">
+              <CoinConverterWidget />
+            </div>
             <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
@@ -29,3 +32,27 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
     </SidebarProvider>
   );
 }
+const CoinConverterWidget = () => {
+  useEffect(() => {
+    // Load the CoinGecko widget script dynamically
+    const script = document.createElement("script");
+    script.src = "https://widgets.coingecko.com/gecko-coin-converter-widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup the script when component unmounts
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return (
+    <div>
+      <gecko-coin-converter-widget
+        locale="en"
+        outlined="true"
+        initial-currency="usd"
+      ></gecko-coin-converter-widget>
+    </div>
+  );
+};
