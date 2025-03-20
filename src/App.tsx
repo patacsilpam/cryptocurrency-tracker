@@ -19,7 +19,7 @@ function App() {
     return () => listener.subscription.unsubscribe();
   }, []);
   return (
-    <div className="relative flex flex-col overflow-hidden w-full text-white">
+    <div>
       <RouterProvider router={router} />
     </div>
   );

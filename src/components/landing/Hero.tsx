@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="flex flex-col justify-center min-h-screen mx-auto text-justify md:text-center max-w-3xl space-y-4 "
+      className="flex flex-col justify-center min-h-screen mx-auto text-justify md:text-center  space-y-4 "
     >
       <section className="space-y-3">
         <h1 className="text-3xl md:text-4xl lg:text-6xl font-medium -mt-10 text-[#d9dadc]">
@@ -19,7 +19,7 @@ export const Hero = () => {
       </section>
       <section>
         <ButtonLink
-          className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg max-w-20 w-full mr-2"
+          className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg max-w-20 w-full mr-2 text-white"
           link="/features"
         >
           Explore Features

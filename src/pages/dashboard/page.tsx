@@ -5,6 +5,32 @@ import {
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
 import { useEffect } from "react";
+import { Sidebar } from "lucide-react";
+// Extend JSX to recognize the custom element
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "gecko-coin-converter-widget": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        locale?: string;
+        outlined?: string;
+        "initial-currency"?: string;
+      };
+      "gecko-coin-price-chart-widget": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        locale?: string;
+        "dark-mode"?: string;
+        outlined?: string;
+        "initial-currency"?: string;
+        width?: string;
+      };
+    }
+  }
+}
 
 export function Dashboard({ children }: { children: React.ReactNode }) {
   return (
@@ -20,7 +46,9 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50"></div>
+            <div className="aspect-video rounded-xl bg-muted/50">
+              <CoinConverterWidget />
+            </div>
             <div className="aspect-video rounded-xl bg-muted/50">
               <CoinConverterWidget />
             </div>
@@ -36,7 +64,8 @@ const CoinConverterWidget = () => {
   useEffect(() => {
     // Load the CoinGecko widget script dynamically
     const script = document.createElement("script");
-    script.src = "https://widgets.coingecko.com/gecko-coin-converter-widget.js";
+    script.src =
+      "https://widgets.coingecko.com/gecko-coin-price-chart-widget.js";
     script.async = true;
     document.body.appendChild(script);
 
@@ -48,11 +77,13 @@ const CoinConverterWidget = () => {
 
   return (
     <div>
-      <gecko-coin-converter-widget
+      <gecko-coin-price-chart-widget
         locale="en"
+        dark-mode="true"
         outlined="true"
         initial-currency="usd"
-      ></gecko-coin-converter-widget>
+        width="499"
+      ></gecko-coin-price-chart-widget>
     </div>
   );
 };

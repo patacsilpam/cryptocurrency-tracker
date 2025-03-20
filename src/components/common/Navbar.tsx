@@ -14,12 +14,12 @@ export function Navbar({
   };
 
   return (
-    <nav className="flex md:flex-row  items-center justify-between max-w-7xl w-full py-5">
+    <nav className="flex md:flex-row  items-center justify-between py-5">
       <div>
         <h1 className="text-xl font-bold ">CryptoDaily</h1>
       </div>
       <div>
-        <ul className="md:flex hidden flex-row ">
+        <ul className="md:flex hidden flex-row text-white">
           {navItems.map((item) => {
             return (
               <li key={item.id} className="text-sm mx-7">
@@ -34,7 +34,7 @@ export function Navbar({
       <div className="md:block hidden">
         <ButtonLink
           link="/auth/login"
-          className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg w-[150px] mr-2"
+          className="border  text-center text-sm md:text-base p-2 px-4 rounded-lg w-[150px] mr-2 text-white"
         >
           Login
         </ButtonLink>
