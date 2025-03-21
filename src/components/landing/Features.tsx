@@ -11,7 +11,7 @@ export function Features({
   return (
     <section id="features" className="flex flex-col space-y-12 max-h-fit py-10">
       {/* Header Section */}
-      <section className="flex flex-row items-start justify-between gap-5 md:gap-32">
+      <section className="flex flex-col md:flex-row items-start justify-between gap-5 md:gap-32">
         <p className="text-3xl md:text-4xl lg:text-4xl font-medium text-[#dddfe4] w-full md:w-1/2">
           Stay Ahead with Real-Time Crypto Insights
         </p>
