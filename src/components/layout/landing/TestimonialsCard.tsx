@@ -1,5 +1,10 @@
-import { testimonialsItem } from "../../data/globals";
-import { Card, CardHeader, CardDescription, CardContent } from "../common/Card";
+import { testimonialsItem } from "@/data/globals";
+import {
+  Card,
+  CardHeader,
+  CardDescription,
+  CardContent,
+} from "@/components/common/Card";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 
 export function TestimonialCard({ userCategory }: { userCategory: string }) {

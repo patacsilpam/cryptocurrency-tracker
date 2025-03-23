@@ -1,4 +1,4 @@
-import { ButtonLink } from "../common/ButtonLink";
+import { ButtonLink } from "@/components/common/ButtonLink";
 export function EmailSubscription() {
   return (
     <>

@@ -6,10 +6,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../common/Table";
+} from "@/components/common/Table";
 import { useEffect, useState } from "react";
-import { NFTResponse, NFT } from "../../../interfaces/interface";
-import { formattedPrice } from "../../../utils/utils";
+import { NFTResponse, NFT } from "@/interfaces/interface";
+import { formattedPrice } from "@/lib/utils";
 
 export function NFTs() {
   const [trendingCoins, setTrendingCoins] = useState<NFT[]>([]);

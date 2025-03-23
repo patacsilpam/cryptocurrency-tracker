@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { testimonialsItem } from "../../data/globals";
+import { testimonialsItem } from "@/data/globals";
 import { TestimonialCard } from "./TestimonialsCard";
 
 export const Testimonials = () => {

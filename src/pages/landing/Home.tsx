@@ -1,11 +1,11 @@
-import { Navbar } from "../../components/common/Navbar";
-import { EmailSubscription } from "../../components/landing/EmailSubscription";
-import { Features } from "../../components/landing/Features";
-import { Hero } from "../../components/landing/Hero";
-import { HowItWorks } from "../../components/landing/HowItWorks";
-import { Testimonials } from "../../components/landing/Testimonials";
-import { Footer } from "../../components/common/Footer";
-import { featureItems, navItems } from "../../data/globals";
+import { Navbar } from "@/components/common/Navbar";
+import { EmailSubscription } from "@/components/layout/landing/EmailSubscription";
+import { Features } from "@/components/layout/landing/Features";
+import { Hero } from "@/components/layout/landing/Hero";
+import { HowItWorks } from "@/components/layout/landing/HowItWorks";
+import { Testimonials } from "@/components/layout/landing/Testimonials";
+import { Footer } from "@/components/common/Footer";
+import { featureItems, navItems } from "@/data/globals";
 import { TrendingCoin } from "@/components/layout/landing/TrendingCoin";
 
 export function Home() {
