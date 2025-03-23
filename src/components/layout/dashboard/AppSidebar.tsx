@@ -14,29 +14,24 @@ import {
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "Dahsboard",
     url: "#",
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Crypto",
     url: "#",
     icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "Transactions",
     url: "#",
     icon: Calendar,
   },
   {
-    title: "Search",
+    title: "News",
     url: "#",
     icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
   },
 ];
 
