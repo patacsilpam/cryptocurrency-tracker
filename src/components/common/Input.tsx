@@ -8,7 +8,7 @@ export function Input({ label, type, onChange, ...props }: InputProps) {
   return (
     <>
       <div className="flex flex-col space-y-1">
-        <label className="font-medium">{label}</label>
+        <label className="font-medium text-white">{label}</label>
         <input
           type={type}
           onChange={onChange}
