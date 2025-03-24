@@ -22,9 +22,9 @@ export function GoogleSignin({ children }: GoogleSigninProps) {
   return (
     <button
       onClick={signIn}
-      className="flex justify-center items-center gap-x-4 border border-zinc-700 text-center text-md rounded-full w-full p-3"
+      className="flex items-center justify-center gap-x-4 w-full p-3 text-md text-center border border-zinc-700 text-white rounded-full"
     >
-      <img src={Google} alt="Google Icon" className=" h-[15px]" />
+      <img src={Google} alt="Google Icon" className="h-[15px]" />
       {children}
     </button>
   );
