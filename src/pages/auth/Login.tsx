@@ -4,10 +4,10 @@ import { Input } from "@/components/common/Input";
 
 export function Login() {
   return (
-    <div className="flex items-center justify-center">
-      <div className="shadow-lg rounded p-5 max-w-md w-full bg-zinc-900">
+    <div className="flex  justify-center items-center h-screen ">
+      <div className="shadow-lg rounded p-5 max-w-md w-full bg-zinc-900 ">
         {/* Align text to the left */}
-        <h1 className="text-xl md:text-2xl font-bold text-center">
+        <h1 className="text-xl md:text-2xl font-bold text-center text-white">
           Sign in to Crypto Daily
         </h1>
         {/*Google Sign in */}
