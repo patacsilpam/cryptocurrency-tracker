@@ -1,4 +1,10 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+  LayoutDashboard,
+  Bitcoin,
+  HandCoins,
+  Currency,
+  Newspaper,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -16,22 +22,27 @@ const items = [
   {
     title: "Dahsboard",
     url: "#",
-    icon: Home,
+    icon: LayoutDashboard,
   },
   {
-    title: "Crypto",
+    title: "Coins",
     url: "#",
-    icon: Inbox,
+    icon: Bitcoin,
   },
   {
-    title: "Transactions",
+    title: "NFTs",
     url: "#",
-    icon: Calendar,
+    icon: Currency,
+  },
+  {
+    title: "Exchange",
+    url: "#",
+    icon: HandCoins,
   },
   {
     title: "News",
     url: "#",
-    icon: Search,
+    icon: Newspaper,
   },
 ];
 
