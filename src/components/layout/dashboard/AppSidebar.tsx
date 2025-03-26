@@ -56,10 +56,16 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton className="text-lg " asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                  <SidebarMenuButton asChild>
+                    <a
+                      href={item.url}
+                      className="flex flex-col items-center py-4"
+                    >
+                      <p className="p-3">
+                        {" "}
+                        <item.icon />
+                      </p>
+                      <p className="text-sm">{item.title}</p>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
