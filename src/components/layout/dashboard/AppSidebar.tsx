@@ -8,6 +8,7 @@ import {
 
 import {
   Sidebar,
+  SidebarHeader,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
@@ -49,8 +50,23 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
+      {" "}
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <a href="#" className="flex flex-col gap-0.5 leading-none">
+                <div>
+                  <span className="font-semibold">Dashboard</span>
+                  <span className="text-xs text-muted-foreground">v1.0.0</span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className="px-0 rounded-md">
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -59,13 +75,13 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <a
                       href={item.url}
-                      className="flex flex-col items-center py-4"
+                      className="flex flex-col items-center py-4 hover:text-[#4359d5]"
                     >
-                      <p className="p-3">
-                        {" "}
+                      <p className="px-2">
                         <item.icon />
                       </p>
-                      <p className="text-sm">{item.title}</p>
+
+                      <p className="text-sm  font-medium">{item.title}</p>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
