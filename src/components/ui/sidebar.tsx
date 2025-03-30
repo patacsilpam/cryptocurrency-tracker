@@ -249,7 +249,7 @@ const Sidebar = React.forwardRef<
             // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
               ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
+              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l group-data-[side=left]:border-zinc-900 group-data-[side=right]:border-gray-300",
             className
           )}
           {...props}
@@ -530,7 +530,7 @@ SidebarMenuItem.displayName = "SidebarMenuItem";
 const sidebarMenuButtonVariants = cva("peer/menu-button flex flex-col ", {
   variants: {
     variant: {
-      default: "hover:bg-[#28282867] hover:text-white",
+      default: "hover:bg-[#000C35] hover:text-white ",
       outline:
         "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
     },
