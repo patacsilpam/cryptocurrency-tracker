@@ -6,31 +6,9 @@ import {
 import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
 import { useEffect } from "react";
 import { DashboardTrendingCoins } from "@/components/layout/dashboard/DashboardTrendingCoins";
+import { DashboardTrendingNFTs } from "@/components/layout/dashboard/DashboardTrendingNft";
+
 // Extend JSX to recognize the custom element
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "gecko-coin-converter-widget": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      > & {
-        locale?: string;
-        outlined?: string;
-        "initial-currency"?: string;
-      };
-      "gecko-coin-price-chart-widget": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      > & {
-        locale?: string;
-        "dark-mode"?: string;
-        outlined?: string;
-        "initial-currency"?: string;
-        width?: string;
-      };
-    }
-  }
-}
 
 export function Dashboard({ children }: { children: React.ReactNode }) {
   return (
@@ -46,11 +24,11 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="rounded-full">
+            <div>
               <DashboardTrendingCoins />
             </div>
-            <div className="aspect-video rounded-xl bg-muted/50">
-              <CoinConverterWidget />
+            <div>
+              <DashboardTrendingNFTs />
             </div>
             <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
