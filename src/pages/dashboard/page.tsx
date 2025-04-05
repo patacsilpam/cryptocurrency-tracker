@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
 import { useEffect } from "react";
-import { Sidebar } from "lucide-react";
+import { DashboardTrendingCoins } from "@/components/layout/dashboard/DashboardTrendingCoins";
 // Extend JSX to recognize the custom element
 declare global {
   namespace JSX {
@@ -46,8 +46,8 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50">
-              <CoinConverterWidget />
+            <div className="rounded-full">
+              <DashboardTrendingCoins />
             </div>
             <div className="aspect-video rounded-xl bg-muted/50">
               <CoinConverterWidget />
