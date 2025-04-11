@@ -49,7 +49,7 @@ export function DashboardTrendingNFTs() {
   console.log(trendingCoins);
   return (
     <div className="bg-slate-800/50 p-5 rounded-xl shadow-md flex flex-col gap-4">
-      <p className="text-white">Trending NFTs</p>
+      <p className="text-white font-medium text-lg">Trending NFTs</p>
       <Table>
         <TableBody>
           {trendingCoins.map((item, index) => (

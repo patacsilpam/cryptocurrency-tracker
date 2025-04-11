@@ -55,7 +55,7 @@ export function DashboardTrendingCoins() {
   }, []);
   return (
     <div className="bg-slate-800/50 p-5 rounded-xl shadow-md flex flex-col gap-4">
-      <p className="text-white">Trending Coins</p>
+      <p className="text-white font-medium text-lg">Trending Coins</p>
       <Table>
         <TableBody>
           {trendingCoins.map((item, index) => (
