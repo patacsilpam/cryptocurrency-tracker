@@ -3,10 +3,16 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from "@/components/ui/sidebar";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/common/Tabs";
 import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
-import { useEffect } from "react";
 import { DashboardTrendingCoins } from "@/components/layout/dashboard/DashboardTrendingCoins";
 import { DashboardTrendingNFTs } from "@/components/layout/dashboard/DashboardTrendingNft";
+import { TrendingCoin } from "@/components/layout/landing/TrendingCoin";
 
 // Extend JSX to recognize the custom element
 
@@ -22,46 +28,36 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
             buildin
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div>
+        {/*parent*/}
+        <div className="flex flex-col">
+          <div className="flex gap-4 px-4">
+            <div className="flex-1 flex flex-col">
               <DashboardTrendingCoins />
             </div>
-            <div>
+            <div className="flex-1 flex flex-col">
               <DashboardTrendingNFTs />
             </div>
-            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="flex-1 flex flex-col text-white">
+              <div>market cap</div>
+            </div>
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+          {/*tabs*/}
+          <div className="py-4">
+            <Tabs defaultValue="" className="w-full text-white px-4">
+              <TabsList>
+                <TabsTrigger value="coins">Coins</TabsTrigger>
+                <TabsTrigger value="nfts">NFTs</TabsTrigger>
+              </TabsList>
+              <TabsContent value="coins">
+                <DashboardTrendingNFTs /> {/* Content for Coins */}
+              </TabsContent>
+              <TabsContent value="nfts">
+                <DashboardTrendingNFTs /> {/* Content for NFTs */}
+              </TabsContent>
+            </Tabs>
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
   );
 }
-const CoinConverterWidget = () => {
-  useEffect(() => {
-    // Load the CoinGecko widget script dynamically
-    const script = document.createElement("script");
-    script.src =
-      "https://widgets.coingecko.com/gecko-coin-price-chart-widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup the script when component unmounts
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  return (
-    <div>
-      <gecko-coin-price-chart-widget
-        locale="en"
-        dark-mode="true"
-        outlined="true"
-        initial-currency="usd"
-        width="499"
-      ></gecko-coin-price-chart-widget>
-    </div>
-  );
-};
