@@ -20,3 +20,15 @@ export function formattedPrice(price: number) {
   });
   return `${symbol}${formattedPrice}`;
 }
+
+export function formatMarketCap(price: number) {
+  if (price >= 1000000000000) {
+    return `$${(price / 1000000000000).toFixed(2)}T`;
+  } else if (price >= 1000000000) {
+    return `$${(price / 1000000000).toFixed(2)}B`;
+  } else if (price >= 1000000) {
+    return `$${(price / 1000000).toFixed(2)}M`;
+  } else {
+    return `$${price.toLocaleString()}`;
+  }
+}
