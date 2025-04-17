@@ -49,7 +49,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
           </div>
           {/*tabs*/}
           <div className="py-4">
-            <Tabs defaultValue="" className="w-full text-white px-4">
+            <Tabs defaultValue="coins" className="w-full text-white px-4">
               <TabsList>
                 <TabsTrigger value="coins">Coins</TabsTrigger>
                 <TabsTrigger value="nfts">NFTs</TabsTrigger>
