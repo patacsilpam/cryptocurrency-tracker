@@ -13,6 +13,7 @@ import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
 import { DashboardTrendingCoins } from "@/components/layout/dashboard/DashboardTrendingCoins";
 import { DashboardTrendingNFTs } from "@/components/layout/dashboard/DashboardTrendingNft";
 import { TrendingCoin } from "@/components/layout/landing/TrendingCoin";
+import { AllCoins } from "@/components/layout/dashboard/AllCoins";
 
 // Extend JSX to recognize the custom element
 
@@ -37,8 +38,13 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
             <div className="flex-1 flex flex-col">
               <DashboardTrendingNFTs />
             </div>
-            <div className="flex-1 flex flex-col text-white">
-              <div>market cap</div>
+            <div className="grid grid-cols-2 gap-3 text-white w-[50vh]">
+              <div className="bg-slate-800/50 rounded-md">coins</div>
+              <div className="bg-slate-800/50 rounded-md">
+                <AllCoins />
+              </div>
+              <div className="bg-slate-800/50 rounded-md">exchanges</div>
+              <div className="bg-slate-800/50 rounded-md">24h volume</div>
             </div>
           </div>
           {/*tabs*/}
