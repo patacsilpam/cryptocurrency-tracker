@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 //import { MarketCap } from "@/interfaces/interface";
+import { formatMarketCap } from "@/lib/utils";
 interface MarketCap {
   data: {
     total_market_cap: {
@@ -36,7 +37,7 @@ export function AllCoins() {
     <div>
       {" "}
       {marketCap !== null ? (
-        <p>${marketCap.toLocaleString()}</p>
+        <p className="text-3xl font-bold">{formatMarketCap(marketCap)}</p>
       ) : (
         <p>Loading...</p>
       )}
