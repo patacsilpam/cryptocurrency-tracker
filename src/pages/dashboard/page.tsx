@@ -39,12 +39,24 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
               <DashboardTrendingNFTs />
             </div>
             <div className="grid grid-cols-2 gap-3 text-white w-[50vh]">
-              <div className="bg-slate-800/50 rounded-md">coins</div>
-              <div className="bg-slate-800/50 rounded-md">
+              <div className="bg-slate-800/50 rounded-md p-2">
+                <h1>Coins</h1>
                 <AllCoins />
               </div>
-              <div className="bg-slate-800/50 rounded-md">exchanges</div>
-              <div className="bg-slate-800/50 rounded-md">24h volume</div>
+              <div className="bg-slate-800/50 rounded-md p-2">
+                <h1>Total Market Cap</h1>
+                <AllCoins />
+              </div>
+              <div className="bg-slate-800/50 rounded-md p-2">
+                {" "}
+                <h1>Exchanges</h1>
+                <AllCoins />
+              </div>
+              <div className="bg-slate-800/50 rounded-md p-2">
+                {" "}
+                <h1>24H Volume</h1>
+                <AllCoins />
+              </div>
             </div>
           </div>
           {/*tabs*/}
