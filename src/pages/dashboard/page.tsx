@@ -13,7 +13,11 @@ import { AppSidebar } from "@/components/layout/dashboard/AppSidebar";
 import { DashboardTrendingCoins } from "@/components/layout/dashboard/DashboardTrendingCoins";
 import { DashboardTrendingNFTs } from "@/components/layout/dashboard/DashboardTrendingNft";
 import { TrendingCoin } from "@/components/layout/landing/TrendingCoin";
-import { AllCoins } from "@/components/layout/dashboard/AllCoins";
+import {
+  AllCoins,
+  TotalCoins,
+  TotalMarketCap,
+} from "@/components/layout/dashboard/AllCoins";
 
 // Extend JSX to recognize the custom element
 
@@ -41,11 +45,11 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
             <div className="grid grid-cols-2 gap-3 text-white w-[50vh]">
               <div className="bg-slate-800/50 rounded-md p-2">
                 <h1>Coins</h1>
-                <AllCoins />
+                <TotalCoins />
               </div>
               <div className="bg-slate-800/50 rounded-md p-2">
                 <h1>Total Market Cap</h1>
-                <AllCoins />
+                <TotalMarketCap />
               </div>
               <div className="bg-slate-800/50 rounded-md p-2">
                 {" "}

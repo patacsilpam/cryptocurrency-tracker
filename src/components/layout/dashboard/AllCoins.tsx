@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { formatMarketCap } from "@/lib/utils";
 interface MarketCap {
   data: {
+    active_cryptocurrencies: number;
     total_market_cap: {
       [key: string]: number;
     };
@@ -11,6 +12,7 @@ interface MarketCap {
 }
 
 export function AllCoins() {
+  const [coins, setCoins] = useState<number | null>(null);
   const [marketCap, setMarketCap] = useState<number | null>(null);
   const [marketCapChange, setMarketCapChange] = useState<number | null>(null);
   const previousMarketCap = useRef<number | null>(null);
@@ -37,6 +39,8 @@ export function AllCoins() {
         // Calculate the change from the previous market cap value
         previousMarketCap.current = marketCapValue;
         console.log("Market Cap Data:", data);
+        const activeCoins = data.data.active_cryptocurrencies;
+        setCoins(activeCoins);
       } catch (error) {
         console.error("Fetch error:", error);
       }
