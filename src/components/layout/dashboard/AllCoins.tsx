@@ -12,6 +12,7 @@ import { p } from "node_modules/react-router/dist/development/fog-of-war-BhhVTjS
 // Interface for the market data
 interface MarketData {
   active_cryptocurrencies: number;
+  exhanges: number;
   total_market_cap: {
     [key: string]: number;
   };
@@ -27,16 +28,7 @@ interface CryptoContextType {
   marketCap: number | null;
   marketCapChange: number | null;
   totalVolume: number | null;
-  isLoading: boolean;
-  error: string | null;
-  refreshData: () => Promise<void>;
-}
-
-// Context interface
-interface CryptoContextType {
-  coins: number | null;
-  marketCap: number | null;
-  marketCapChange: number | null;
+  exchanges: number | null;
   isLoading: boolean;
   error: string | null;
   refreshData: () => Promise<void>;
@@ -52,6 +44,7 @@ export function CryptoDataProvider({ children }: { children: ReactNode }) {
   const [marketCap, setMarketCap] = useState<number | null>(null);
   const [marketCapChange, setMarketCapChange] = useState<number | null>(null);
   const [totalVolume, setTotalVolume] = useState<number | null>(null);
+  const [exchanges, setExchanges] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const previousMarketCap = useRef<number | null>(null);
@@ -92,6 +85,9 @@ export function CryptoDataProvider({ children }: { children: ReactNode }) {
       //store total volume
       const totalVolumeValue = data.data.total_volume.usd;
       setTotalVolume(totalVolumeValue);
+      //store exchanges
+      const exchangeValue = data.data.markets;
+      setExchanges(exchangeValue);
       console.log("Market Data:", data);
     } catch (error) {
       console.error("Fetch error:", error);
@@ -116,6 +112,7 @@ export function CryptoDataProvider({ children }: { children: ReactNode }) {
     marketCap,
     marketCapChange,
     totalVolume,
+    exchanges,
     isLoading,
     error,
     refreshData: fetchMarketData,
@@ -208,5 +205,15 @@ export function TotalVolume() {
   );
 }
 export function Exchanges() {
-  return <div></div>;
+  const { exchanges, isLoading, error } = useCryptoData();
+  return (
+    <div>
+      {!isLoading && exchanges !== null ? (
+        <p className="text-3xl text-blue-700 font-bold">{exchanges}</p>
+      ) : (
+        <p className="text-gray-400">Loading...</p>
+      )}
+      {error && <p className="text-red-500">{error}</p>}
+    </div>
+  );
 }
