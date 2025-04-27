@@ -209,7 +209,9 @@ export function Exchanges() {
   return (
     <div>
       {!isLoading && exchanges !== null ? (
-        <p className="text-3xl text-blue-700 font-bold">{exchanges}</p>
+        <p className="text-3xl text-blue-700 font-bold">
+          {formatMarketCap(exchanges)}
+        </p>
       ) : (
         <p className="text-gray-400">Loading...</p>
       )}
