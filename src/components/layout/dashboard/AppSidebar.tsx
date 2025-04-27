@@ -56,18 +56,18 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#" className="flex flex-col gap-0.5 leading-none">
-                <div>
-                  <span className="font-semibold">Dashboard</span>
-                  <span className="text-xs text-muted-foreground">v1.0.0</span>
+                <div className="flex items-center justify-center py-4">
+                  <span className="font-semibold">
+                    <img src="/vite.svg" />
+                  </span>
                 </div>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="mt-14">
         <SidebarGroup className="px-0 rounded-md">
-          <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -75,7 +75,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <a
                       href={item.url}
-                      className="flex flex-col items-center py-4 hover:text-[#4359d5]"
+                      className="flex flex-col items-center py-5 hover:text-[#4359d5]"
                     >
                       <p className="px-2">
                         <item.icon />
