@@ -32,37 +32,46 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         <SidebarInset>
           <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
             <div className="flex items-center gap-2 px-4">
-              <SidebarTrigger className="-ml-1" />
-              buildin
+              <SidebarTrigger className="ml-3" />
+              <span className="text-white">buildin</span>
             </div>
           </header>
           {/*parent*/}
-          <div className="flex flex-col">
-            <div className="flex gap-4 px-4">
+          <div className="flex flex-col px-5">
+            <div className="grid grid-cols-3 grid-rows-1 gap-7 px-5">
               <div className="flex-1 flex flex-col">
                 <DashboardTrendingCoins />
               </div>
               <div className="flex-1 flex flex-col">
                 <DashboardTrendingNFTs />
               </div>
-              <div className="grid grid-cols-2 gap-3 text-white w-[50vh]">
-                <div className="bg-slate-800/50 rounded-md p-2">
-                  <h1>Coins</h1>
-                  <TotalCoins />
+              <div className="grid grid-cols-2 grid-rows-2 gap-5 text-white h-full">
+                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                  <h1 className="font-medium mb-2">Coins</h1>
+                  <div className="flex-1 flex items-center justify-center">
+                    <TotalCoins />
+                  </div>
                 </div>
-                <div className="bg-slate-800/50 rounded-md p-2">
-                  <h1>Total Market Cap</h1>
-                  <TotalMarketCap />
+
+                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                  <h1 className="font-medium mb-2">Total Market Cap</h1>
+                  <div className="flex-1 flex items-center justify-center">
+                    <TotalMarketCap />
+                  </div>
                 </div>
-                <div className="bg-slate-800/50 rounded-md p-2">
-                  {" "}
-                  <h1>Exchanges</h1>
-                  <Exchanges />
+
+                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                  <h1 className="font-medium mb-2">Exchanges</h1>
+                  <div className="flex-1 flex items-center justify-center">
+                    <Exchanges />
+                  </div>
                 </div>
-                <div className="bg-slate-800/50 rounded-md p-2">
-                  {" "}
-                  <h1>24H Volume</h1>
-                  <TotalVolume />
+
+                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                  <h1 className="font-medium mb-2">24H Volume</h1>
+                  <div className="flex-1 flex items-center justify-center">
+                    <TotalVolume />
+                  </div>
                 </div>
               </div>
             </div>
