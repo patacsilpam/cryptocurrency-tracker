@@ -54,44 +54,46 @@ export function DashboardTrendingCoins() {
     fetchTrendingCoins();
   }, []);
   return (
-    <div className="bg-slate-800/50 p-5 rounded-xl shadow-md flex flex-col gap-4">
-      <p className="text-white font-medium text-lg">Trending Coins</p>
-      <Table>
-        <TableBody>
-          {trendingCoins.map((item, index) => (
-            <TableRow
-              key={item.coin_id}
-              className="border-transparent hover:bg-transparent"
-            >
-              <TableCell className="font-medium text-white">
-                {index + 1}
-              </TableCell>
-              <TableCell className="font-medium flex items-center gap-2 text-white">
-                <img src={item.thumb} alt={item.name} className="h-7" />{" "}
-                {item.name}
-              </TableCell>
-              <TableCell>
-                <span
-                  className={`${
-                    item.data.price_change_percentage_24h.usd < 0
-                      ? "text-red-500"
-                      : "text-green-500"
-                  } font-medium`}
-                >
-                  {item.data.price_change_percentage_24h.usd.toFixed(2)}%
-                </span>
-              </TableCell>
-              <TableCell>
-                <img
-                  src={item.data.sparkline}
-                  alt={`${item.name} chart`}
-                  className="h-7"
-                />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+    <div className="bg-slate-800/50 p-4 rounded-xl shadow-md  h-[50vh]">
+      <p className="text-white font-medium text-lg ">Trending Coins</p>
+      <div className="flex flex-col justify-center py-2">
+        <Table>
+          <TableBody>
+            {trendingCoins.map((item, index) => (
+              <TableRow
+                key={item.coin_id}
+                className="border-transparent hover:bg-transparent"
+              >
+                <TableCell className="font-medium text-white">
+                  {index + 1}
+                </TableCell>
+                <TableCell className="font-medium flex items-center gap-2 text-white">
+                  <img src={item.thumb} alt={item.name} className="h-7" />{" "}
+                  {item.name}
+                </TableCell>
+                <TableCell>
+                  <span
+                    className={`${
+                      item.data.price_change_percentage_24h.usd < 0
+                        ? "text-red-500"
+                        : "text-green-500"
+                    } font-medium`}
+                  >
+                    {item.data.price_change_percentage_24h.usd.toFixed(2)}%
+                  </span>
+                </TableCell>
+                <TableCell>
+                  <img
+                    src={item.data.sparkline}
+                    alt={`${item.name} chart`}
+                    className="h-7"
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
