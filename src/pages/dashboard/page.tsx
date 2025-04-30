@@ -30,14 +30,14 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         <AppSidebar />
         {children}
         <SidebarInset>
-          <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+          <header className="bg-black border-b-stone-900 border-b flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 sticky top-0 z-10">
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="ml-3" />
               <span className="text-white">buildin</span>
             </div>
           </header>
           {/*parent*/}
-          <div className="flex flex-col px-5">
+          <div className="flex flex-col px-3 mt-10">
             <div className="grid grid-cols-3 grid-rows-1 gap-7 px-5">
               <div className="flex-1 flex flex-col">
                 <DashboardTrendingCoins />
