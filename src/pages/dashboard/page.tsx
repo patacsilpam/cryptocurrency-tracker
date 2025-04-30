@@ -19,7 +19,7 @@ import {
   TotalCoins,
   TotalMarketCap,
   TotalVolume,
-} from "@/components/layout/dashboard/AllCoins";
+} from "@/components/layout/dashboard/CryptoMarketStats";
 
 // Extend JSX to recognize the custom element
 
