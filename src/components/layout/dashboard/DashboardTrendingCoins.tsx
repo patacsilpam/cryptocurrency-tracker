@@ -54,7 +54,7 @@ export function DashboardTrendingCoins() {
     fetchTrendingCoins();
   }, []);
   return (
-    <div className="bg-[#1a1b2f] bg-opacity-10 p-4 rounded-xl shadow-lg border-[#2a262653] border  h-[50vh]">
+    <div className="bg-[#1a1b2f] bg-opacity-10 p-4 rounded-xl shadow-lg border-[#2a262653] border   h-[50vh]">
       <p className="text-white font-medium text-lg ">Trending Coins</p>
       <div className="flex flex-col justify-center py-2">
         <Table>
