@@ -46,28 +46,28 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
                 <DashboardTrendingNFTs />
               </div>
               <div className="grid grid-cols-2 grid-rows-2 gap-5 text-white h-full">
-                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                <div className="bg-[#1a1b2f] bg-opacity-10 p-4 rounded-xl shadow-lg border-[#2a262653] border flex flex-col">
                   <h1 className="font-medium mb-2">Coins</h1>
                   <div className="flex-1 flex items-center justify-center">
                     <TotalCoins />
                   </div>
                 </div>
 
-                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                <div className="bg-[#1a1b2f] bg-opacity-10 p-4 rounded-xl shadow-lg border-[#2a262653] border flex flex-col">
                   <h1 className="font-medium mb-2">Total Market Cap</h1>
                   <div className="flex-1 flex items-center justify-center">
                     <TotalMarketCap />
                   </div>
                 </div>
 
-                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                <div className="bg-[#1a1b2f] bg-opacity-10 p-4 rounded-xl shadow-lg border-[#2a262653] border flex flex-col">
                   <h1 className="font-medium mb-2">Exchanges</h1>
                   <div className="flex-1 flex items-center justify-center">
                     <Exchanges />
                   </div>
                 </div>
 
-                <div className="bg-slate-800/50 rounded-md p-4 flex flex-col">
+                <div className="bg-[#1a1b2f] bg-opacity-10 p-4 rounded-xl shadow-lg border-[#2a262653] border flex flex-col">
                   <h1 className="font-medium mb-2">24H Volume</h1>
                   <div className="flex-1 flex items-center justify-center">
                     <TotalVolume />
