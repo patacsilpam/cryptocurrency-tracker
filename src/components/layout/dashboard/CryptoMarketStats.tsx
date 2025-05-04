@@ -87,7 +87,6 @@ export function CryptoDataProvider({ children }: { children: ReactNode }) {
       //store exchanges
       const exchangeValue = data.data.markets;
       setExchanges(exchangeValue);
-      console.log("Market Data:", data);
     } catch (error) {
       console.error("Fetch error:", error);
       setError("Failed to fetch market data");
@@ -167,7 +166,7 @@ export function TotalMarketCap() {
           </p>
         </div>
       ) : (
-        <p className="text-gray-400">Loading...</p>
+        <p className="text-gray-400"></p>
       )}
     </div>
   );
@@ -182,7 +181,7 @@ export function TotalCoins() {
           {coins.toLocaleString()}
         </p>
       ) : (
-        <p className="text-gray-400">Loading...</p>
+        <p className="text-gray-400"></p>
       )}
       {error && <p className="text-red-500">{error}</p>}
     </div>
@@ -197,7 +196,7 @@ export function TotalVolume() {
           {formatMarketCap(totalVolume)}
         </p>
       ) : (
-        <p className="text-gray-400">Loading...</p>
+        <p className="text-gray-400"></p>
       )}
       {error && <p className="text-red-500">{error}</p>}
     </div>
@@ -212,7 +211,7 @@ export function Exchanges() {
           {formatMarketCap(exchanges)}
         </p>
       ) : (
-        <p className="text-gray-400">Loading...</p>
+        <p className="text-gray-400"></p>
       )}
       {error && <p className="text-red-500">{error}</p>}
     </div>
