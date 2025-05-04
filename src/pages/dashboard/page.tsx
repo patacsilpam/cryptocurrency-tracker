@@ -20,6 +20,7 @@ import {
   TotalMarketCap,
   TotalVolume,
 } from "@/components/layout/dashboard/CryptoMarketStats";
+import AllCoins from "@/components/layout/dashboard/AllCoins";
 
 // Extend JSX to recognize the custom element
 
@@ -83,7 +84,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
                   <TabsTrigger value="nfts">NFTs</TabsTrigger>
                 </TabsList>
                 <TabsContent value="coins">
-                  <DashboardTrendingCoins /> {/* Content for Coins */}
+                  <AllCoins /> {/* Content for Coins */}
                 </TabsContent>
                 <TabsContent value="nfts">
                   <DashboardTrendingNFTs /> {/* Content for NFTs */}
