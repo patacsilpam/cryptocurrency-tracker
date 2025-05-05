@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 //convert crypto price to USD
 export function formattedPrice(price: number) {
   const symbol: string = "$";
-  const decimalPlaces: number = 3;
+  const decimalPlaces: number = 2;
 
   if (price < 0.1) {
     return `${symbol}${price.toExponential(4)}`;
@@ -23,11 +23,11 @@ export function formattedPrice(price: number) {
 
 export function formatMarketCap(price: number) {
   if (price >= 1000000000000) {
-    return `$${(price / 1000000000000).toFixed(3)}T`;
+    return `$${(price / 1000000000000).toFixed(2)}T`;
   } else if (price >= 1000000000) {
-    return `$${(price / 1000000000).toFixed(3)}B`;
+    return `$${(price / 1000000000).toFixed(2)}B`;
   } else if (price >= 1000000) {
-    return `$${(price / 1000000).toFixed(3)}M`;
+    return `$${(price / 1000000).toFixed(2)}M`;
   } else {
     return `$${price.toLocaleString()}`;
   }
