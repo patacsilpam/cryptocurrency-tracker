@@ -7,6 +7,8 @@ import {
 } from "@/components/common/Table";
 import { formattedPrice } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 interface Coins {
   id: string;
   name: string;
@@ -21,44 +23,63 @@ interface Coins {
 }
 
 export default function AllCoins() {
-  const [coins, setCoins] = useState<Coins[]>([]);
   const coinsPerPage = 100;
+
+  const [coins, setCoins] = useState<Coins[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
-  // Fetch all coins data from the API
+  const fetchTotalCoins = async () => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/coins/list`);
+      const data = await res.json();
+      return data.length;
+    } catch (err) {
+      console.error("Failed to fetch total coins", err);
+      return 0;
+    }
+  };
+
+  const fetchCoins = async (page = 1) => {
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `${
+          import.meta.env.VITE_API_URL
+        }/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${coinsPerPage}&page=${page}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "x-cg-demo-api-key": import.meta.env.VITE_API_KEY,
+          },
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to fetch coins");
+
+      const data = await response.json();
+      setCoins(data);
+      setCurrentPage(page);
+    } catch (error) {
+      console.error("Error fetching coins:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchCoins = async (page = currentPage) => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/coins/markets?vs_currency=usd`,
-          {
-            method: "GET",
-            headers: {
-              accept: "application/json",
-              "x-cg-demo-api-key": import.meta.env.VITE_API_KEY,
-            },
-          }
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
+    // Fetch total coin count once on mount
+    fetchTotalCoins().then((total) => {
+      const pages = Math.ceil(total / coinsPerPage);
+      setTotalPages(pages);
+    });
 
-        // If we get data back but it's an empty array, we've reached the end of available pages
-        if (data.length === 0 && page > 1) {
-          setCurrentPage(page - 1);
-          return;
-        }
+    // Fetch the first page of coins
+    fetchCoins(1);
+  }, []);
 
-        setCoins(data);
-      } catch (error) {
-        console.error("Error fetching coins:", error);
-        return null;
-      }
-    };
-
-    fetchCoins();
-  }, [currentPage]);
   return (
     <div className="w-full text-white bg-[#1a1b2f] bg-opacity-10 border-[#2a262653] border rounded-xl shadow-lg">
       <Table>
@@ -88,12 +109,45 @@ export default function AllCoins() {
                     : "text-red-500"
                 }
               >
-                {coin.price_change_percentage_24h.toFixed(2)}%
+                {coin.price_change_percentage_24h}%
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+
+      {/* Pagination Controls */}
+      <div className="mt-6 flex justify-center items-center space-x-4">
+        <button
+          onClick={() => fetchCoins(currentPage - 1)}
+          disabled={currentPage === 1 || loading}
+          className={`flex items-center px-3 py-1 rounded-md ${
+            currentPage === 1 || loading
+              ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+              : "bg-blue-500 text-white hover:bg-blue-600"
+          }`}
+        >
+          <ChevronLeft className="h-4 w-4 mr-1" />
+          Previous
+        </button>
+
+        <div className="text-gray-700 dark:text-white">
+          Page {currentPage} of {totalPages}
+        </div>
+
+        <button
+          onClick={() => fetchCoins(currentPage + 1)}
+          disabled={currentPage >= totalPages || loading}
+          className={`flex items-center px-3 py-1 rounded-md ${
+            currentPage >= totalPages || loading
+              ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+              : "bg-blue-500 text-white hover:bg-blue-600"
+          }`}
+        >
+          Next
+          <ChevronRight className="h-4 w-4 ml-1" />
+        </button>
+      </div>
     </div>
   );
 }
