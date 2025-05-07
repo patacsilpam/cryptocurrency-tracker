@@ -12,11 +12,11 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useState } from "react";
 
 // Menu items.
 const items = [
@@ -48,6 +48,10 @@ const items = [
 ];
 
 export function AppSidebar() {
+  const [isActive, setIsActive] = useState<string>("");
+  const handleToggle = (url: string) => {
+    setIsActive(url);
+  };
   return (
     <Sidebar>
       {" "}
@@ -75,7 +79,12 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <a
                       href={item.url}
-                      className="flex flex-col items-center py-5 hover:text-[#4359d5]"
+                      className={`${
+                        isActive === item.title
+                          ? "bg-[#000C35] text-white"
+                          : "text-gray-700"
+                      }flex flex-col items-center py-5 hover:text-[#4359d5]`}
+                      onClick={() => handleToggle(item.title)}
                     >
                       <p className="px-2">
                         <item.icon />
