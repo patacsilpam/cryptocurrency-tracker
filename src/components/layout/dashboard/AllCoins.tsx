@@ -81,41 +81,42 @@ export default function AllCoins() {
   }, []);
 
   return (
-    <div className="w-full text-white bg-[#1a1b2f] bg-opacity-10 border-[#2a262653] border rounded-xl shadow-lg">
-      <Table>
-        <TableHead className="w-16">Rank</TableHead>
-        <TableHead className="w-40">Coin</TableHead>
-        <TableHead className="w-24">Symbol</TableHead>
-        <TableHead className="w-32">Price</TableHead>
-        <TableHead className="w-40">Market Cap</TableHead>
-        <TableHead className="w-40">Total Volume</TableHead>
-        <TableHead className="w-32">Price Change</TableHead>
-        <TableBody>
-          {coins.map((coin) => (
-            <TableRow key={coin.id}>
-              <TableCell>{coin.market_cap_rank}</TableCell>
-              <TableCell className="flex items-center gap-2">
-                <img src={coin.image} className="h-10" />
-                {coin.name}
-              </TableCell>
-              <TableCell>{coin.symbol.toUpperCase()}</TableCell>
-              <TableCell>{formattedPrice(coin.current_price)}</TableCell>
-              <TableCell>{formattedPrice(coin.market_cap)}</TableCell>
-              <TableCell>{formattedPrice(coin.total_volume)}</TableCell>
-              <TableCell
-                className={
-                  coin.price_change_percentage_24h > 0
-                    ? "text-green-500"
-                    : "text-red-500"
-                }
-              >
-                {coin.price_change_percentage_24h}%
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-
+    <div>
+      <div className="w-full text-white bg-[#1a1b2f] bg-opacity-10 border-[#2a262653] border rounded-xl shadow-lg">
+        <Table>
+          <TableHead className="w-16">Rank</TableHead>
+          <TableHead className="w-40">Coin</TableHead>
+          <TableHead className="w-24">Symbol</TableHead>
+          <TableHead className="w-32">Price</TableHead>
+          <TableHead className="w-40">Market Cap</TableHead>
+          <TableHead className="w-40">Total Volume</TableHead>
+          <TableHead className="w-32">Price Change</TableHead>
+          <TableBody>
+            {coins.map((coin) => (
+              <TableRow key={coin.id}>
+                <TableCell>{coin.market_cap_rank}</TableCell>
+                <TableCell className="flex items-center gap-2">
+                  <img src={coin.image} className="h-10" />
+                  {coin.name}
+                </TableCell>
+                <TableCell>{coin.symbol.toUpperCase()}</TableCell>
+                <TableCell>{formattedPrice(coin.current_price)}</TableCell>
+                <TableCell>{formattedPrice(coin.market_cap)}</TableCell>
+                <TableCell>{formattedPrice(coin.total_volume)}</TableCell>
+                <TableCell
+                  className={
+                    coin.price_change_percentage_24h > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }
+                >
+                  {coin.price_change_percentage_24h}%
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
       {/* Pagination Controls */}
       <div className="mt-6 flex justify-center items-center space-x-4">
         <button
