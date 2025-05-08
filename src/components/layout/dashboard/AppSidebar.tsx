@@ -95,6 +95,9 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              <div className="my-10 text-center">
+                <button className="">Logout</button>
+              </div>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
