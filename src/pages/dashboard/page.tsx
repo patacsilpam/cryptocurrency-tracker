@@ -87,7 +87,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
                   <AllCoins /> {/* Content for Coins */}
                 </TabsContent>
                 <TabsContent value="nfts">
-                  <DashboardTrendingNFTs /> {/* Content for NFTs */}
+                  <AllCoins /> {/* Content for NFTs */}
                 </TabsContent>
               </Tabs>
             </div>
