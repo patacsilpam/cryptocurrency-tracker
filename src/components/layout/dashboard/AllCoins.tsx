@@ -12,12 +12,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface Coins {
   id: string;
   name: string;
+  market_cap_rank: number;
   symbol: string;
   image: string;
-  symbols: string;
   current_price: number;
   market_cap: number;
-  market_cap_rank: number;
   total_volume: number;
   price_change_percentage_24h: number;
 }
@@ -29,17 +28,6 @@ export default function AllCoins() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
-
-  const fetchTotalCoins = async () => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/coins/list`);
-      const data = await res.json();
-      return data.length;
-    } catch (err) {
-      console.error("Failed to fetch total coins", err);
-      return 0;
-    }
-  };
 
   const fetchCoins = async (page = 1) => {
     try {
@@ -71,7 +59,8 @@ export default function AllCoins() {
 
   useEffect(() => {
     // Fetch total coin count once on mount
-    fetchTotalCoins().then((total) => {
+    fetchCoins().then(() => {
+      const total = coins.length; // Assuming coins array length represents total coins
       const pages = Math.ceil(total / coinsPerPage);
       setTotalPages(pages);
     });
@@ -84,13 +73,17 @@ export default function AllCoins() {
     <div>
       <div className="w-full text-white bg-[#1a1b2f] bg-opacity-10 border-[#2a262653] border rounded-xl shadow-lg">
         <Table>
-          <TableHead className="w-16">Rank</TableHead>
-          <TableHead className="w-40">Coin</TableHead>
-          <TableHead className="w-24">Symbol</TableHead>
-          <TableHead className="w-32">Price</TableHead>
-          <TableHead className="w-40">Market Cap</TableHead>
-          <TableHead className="w-40">Total Volume</TableHead>
-          <TableHead className="w-32">Price Change</TableHead>
+          <thead>
+            <TableRow>
+              <TableHead className="w-16">Rank</TableHead>
+              <TableHead className="w-40">Coin</TableHead>
+              <TableHead className="w-24">Symbol</TableHead>
+              <TableHead className="w-32">Price</TableHead>
+              <TableHead className="w-40">Market Cap</TableHead>
+              <TableHead className="w-40">Total Volume</TableHead>
+              <TableHead className="w-32">Price Change</TableHead>
+            </TableRow>
+          </thead>
           <TableBody>
             {coins.map((coin) => (
               <TableRow key={coin.id}>
