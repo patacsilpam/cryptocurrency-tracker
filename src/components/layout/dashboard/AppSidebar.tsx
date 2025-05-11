@@ -16,13 +16,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Logout from "@/components/common/Logout";
 
 // Menu items.
 const items = [
   {
     title: "Dashboard",
-    url: "#",
+    url: "/dashboard",
     icon: LayoutDashboard,
   },
   {
@@ -42,15 +43,20 @@ const items = [
   },
   {
     title: "News",
-    url: "#",
+    url: "/news",
     icon: Newspaper,
   },
 ];
 
 export function AppSidebar() {
-  const [isActive, setIsActive] = useState<string>("");
+  const [activeLink, setActiveLink] = useState<string>("");
+
+  useEffect(() => {
+    const currentUrl = window.location.pathname;
+    setActiveLink(currentUrl);
+  }, []);
   const handleToggle = (url: string) => {
-    setIsActive(url);
+    setActiveLink(url);
   };
   return (
     <Sidebar>
@@ -80,11 +86,11 @@ export function AppSidebar() {
                     <a
                       href={item.url}
                       className={`${
-                        isActive === item.title
+                        activeLink === item.url
                           ? "bg-[#000C35] text-white"
                           : "text-gray-700"
                       }flex flex-col items-center py-5 hover:text-[#4359d5]`}
-                      onClick={() => handleToggle(item.title)}
+                      onClick={() => handleToggle(item.url)}
                     >
                       <p className="px-2">
                         <item.icon />
@@ -95,13 +101,11 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              <div className="my-10 text-center">
-                <button className="">Logout</button>
-              </div>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <Logout />
     </Sidebar>
   );
 }
