@@ -1,3 +1,5 @@
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -5,49 +7,32 @@ import {
   TableHead,
   TableCell,
 } from "@/components/common/Table";
-import { formattedPrice } from "@/lib/utils";
-import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface Coins {
+interface NFTs {
   id: string;
+  contract_address: string;
   name: string;
+  asset_platform_id: string;
   symbol: string;
-  image: string;
-  symbols: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  total_volume: number;
-  price_change_percentage_24h: number;
 }
 
 export default function AllNFTs() {
-  const coinsPerPage = 100;
-
-  const [coins, setCoins] = useState<Coins[]>([]);
+  const coinsPerPage = 43;
+  const [coins, setCoins] = useState<NFTs[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const fetchTotalCoins = async () => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/coins/list`);
-      const data = await res.json();
-      return data.length;
-    } catch (err) {
-      console.error("Failed to fetch total coins", err);
-      return 0;
-    }
-  };
+  const assumedTotalCount = 3000; // Approximate or guessed total count
+  const apiPageSize = coinsPerPage; // Since you're using 43 directly in the fetch
 
-  const fetchCoins = async (page = 1) => {
+  const fetchNFTs = async (page = 1) => {
     try {
       setLoading(true);
       const response = await fetch(
         `${
           import.meta.env.VITE_API_URL
-        }/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${coinsPerPage}&page=${page}`,
+        }/nfts/list?order=h24_volume_usd_asc&per_page=${apiPageSize}&page=${page}`,
         {
           method: "GET",
           headers: {
@@ -57,70 +42,57 @@ export default function AllNFTs() {
         }
       );
 
-      if (!response.ok) throw new Error("Failed to fetch coins");
+      if (!response.ok) throw new Error("Failed to fetch NFTs");
 
       const data = await response.json();
       setCoins(data);
       setCurrentPage(page);
     } catch (error) {
-      console.error("Error fetching coins:", error);
+      console.error("Error fetching NFTs:", error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    // Fetch total coin count once on mount
-    fetchTotalCoins().then((total) => {
-      const pages = Math.ceil(total / coinsPerPage);
-      setTotalPages(pages);
-    });
-
-    // Fetch the first page of coins
-    fetchCoins(1);
+    const pages = Math.ceil(assumedTotalCount / coinsPerPage);
+    setTotalPages(pages);
+    fetchNFTs(1);
   }, []);
 
   return (
     <div>
       <div className="w-full text-white bg-[#1a1b2f] bg-opacity-10 border-[#2a262653] border rounded-xl shadow-lg">
         <Table>
-          <TableHead className="w-16">Rank</TableHead>
-          <TableHead className="w-40">Coin</TableHead>
-          <TableHead className="w-24">Symbol</TableHead>
-          <TableHead className="w-32">Price</TableHead>
-          <TableHead className="w-40">Market Cap</TableHead>
-          <TableHead className="w-40">Total Volume</TableHead>
-          <TableHead className="w-32">Price Change</TableHead>
+          <thead>
+            <TableRow>
+              <TableHead className="w-16">#</TableHead>
+              <TableHead className="w-24">Contract Address</TableHead>
+              <TableHead className="w-36">Coin</TableHead>
+              <TableHead className="w-48">Asset Platform Id</TableHead>
+              <TableHead className="w-64">Symbol</TableHead>
+            </TableRow>
+          </thead>
           <TableBody>
-            {coins.map((coin) => (
+            {coins.map((coin, index) => (
               <TableRow key={coin.id}>
-                <TableCell>{coin.market_cap_rank}</TableCell>
-                <TableCell className="flex items-center gap-2">
-                  <img src={coin.image} className="h-10" />
-                  {coin.name}
+                <TableCell>
+                  {(currentPage - 1) * coinsPerPage + index + 1}
                 </TableCell>
-                <TableCell>{coin.symbol.toUpperCase()}</TableCell>
-                <TableCell>{formattedPrice(coin.current_price)}</TableCell>
-                <TableCell>{formattedPrice(coin.market_cap)}</TableCell>
-                <TableCell>{formattedPrice(coin.total_volume)}</TableCell>
-                <TableCell
-                  className={
-                    coin.price_change_percentage_24h > 0
-                      ? "text-green-500"
-                      : "text-red-500"
-                  }
-                >
-                  {coin.price_change_percentage_24h}%
-                </TableCell>
+                <TableCell>{coin.contract_address}</TableCell>
+                <TableCell>{coin.name}</TableCell>
+                <TableCell>{coin.asset_platform_id.toUpperCase()}</TableCell>
+                <TableCell>{coin.symbol?.toUpperCase()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
+
       {/* Pagination Controls */}
       <div className="mt-6 flex justify-center items-center space-x-4">
         <button
-          onClick={() => fetchCoins(currentPage - 1)}
+          onClick={() => fetchNFTs(currentPage - 1)}
           disabled={currentPage === 1 || loading}
           className={`flex items-center px-3 py-1 rounded-md ${
             currentPage === 1 || loading
@@ -137,7 +109,7 @@ export default function AllNFTs() {
         </div>
 
         <button
-          onClick={() => fetchCoins(currentPage + 1)}
+          onClick={() => fetchNFTs(currentPage + 1)}
           disabled={currentPage >= totalPages || loading}
           className={`flex items-center px-3 py-1 rounded-md ${
             currentPage >= totalPages || loading
