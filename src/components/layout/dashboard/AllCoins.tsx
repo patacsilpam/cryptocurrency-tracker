@@ -29,6 +29,28 @@ export default function AllCoins() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
+  const fetchTotalCoins = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/coins/list`,
+        {
+          headers: {
+            accept: "application/json",
+            "x-cg-demo-api-key": import.meta.env.VITE_API_KEY,
+          },
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to fetch coin list");
+
+      const data = await response.json();
+      const total = data.length;
+      setTotalPages(Math.ceil(total / coinsPerPage));
+    } catch (err) {
+      console.error("Failed to fetch total coin count:", err);
+    }
+  };
+
   const fetchCoins = async (page = 1) => {
     try {
       setLoading(true);
@@ -58,14 +80,7 @@ export default function AllCoins() {
   };
 
   useEffect(() => {
-    // Fetch total coin count once on mount
-    fetchCoins().then(() => {
-      const total = coins.length; // Assuming coins array length represents total coins
-      const pages = Math.ceil(total / coinsPerPage);
-      setTotalPages(pages);
-    });
-
-    // Fetch the first page of coins
+    fetchTotalCoins();
     fetchCoins(1);
   }, []);
 
@@ -103,13 +118,14 @@ export default function AllCoins() {
                       : "text-red-500"
                   }
                 >
-                  {coin.price_change_percentage_24h}%
+                  {coin.price_change_percentage_24h.toFixed(2)}%
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
+
       {/* Pagination Controls */}
       <div className="mt-6 flex justify-center items-center space-x-4">
         <button
