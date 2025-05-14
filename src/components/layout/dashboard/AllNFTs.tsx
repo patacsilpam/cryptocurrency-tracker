@@ -17,13 +17,13 @@ interface NFTs {
 }
 
 export default function AllNFTs() {
-  const coinsPerPage = 43;
+  const coinsPerPage = 50;
   const [coins, setCoins] = useState<NFTs[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const assumedTotalCount = 3000; // Approximate or guessed total count
+  const assumedTotalCount = 3010; // Approximate or guessed total count
   const apiPageSize = coinsPerPage; // Since you're using 43 directly in the fetch
 
   const fetchNFTs = async (page = 1) => {

@@ -80,7 +80,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
             {/*tabs*/}
             <div className="py-4">
               <Tabs defaultValue="coins" className="w-full text-white px-4">
-                <TabsList>
+                <TabsList className="py-3">
                   <TabsTrigger value="coins">Coins</TabsTrigger>
                   <TabsTrigger value="nfts">NFTs</TabsTrigger>
                 </TabsList>
