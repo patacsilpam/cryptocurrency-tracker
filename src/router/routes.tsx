@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Home } from "../pages/landing/Home";
 import { Dashboard } from "@/pages/dashboard/page";
 import { News } from "@/pages/news/page";
+import { Coins } from "@/pages/coins/page";
+import { Exchanges } from "@/pages/exchanges/page";
 import { Login } from "@/pages/auth/Login";
 import { Register } from "@/pages/auth/Register";
 import { useEffect, useState } from "react";
@@ -57,6 +59,22 @@ export const routes = [
     element: (
       <PrivateRoute>
         <News />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/coins",
+    element: (
+      <PrivateRoute>
+        <Coins />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/exchanges",
+    element: (
+      <PrivateRoute>
+        <Exchanges />
       </PrivateRoute>
     ),
   },
