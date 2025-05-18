@@ -28,17 +28,17 @@ const items = [
   },
   {
     title: "Coins",
-    url: "#",
+    url: "/coins",
     icon: Bitcoin,
   },
   {
     title: "NFTs",
-    url: "#",
+    url: "/nfts",
     icon: Currency,
   },
   {
     title: "Exchange",
-    url: "#",
+    url: "/exchanges",
     icon: HandCoins,
   },
   {
