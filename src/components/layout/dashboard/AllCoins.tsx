@@ -8,6 +8,7 @@ import {
 import { formattedPrice } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { SearchBar } from "@/components/common/SearchBar";
 
 interface Coins {
   id: string;
@@ -20,11 +21,15 @@ interface Coins {
   total_volume: number;
   price_change_percentage_24h: number;
 }
-
-export default function AllCoins() {
+interface AllCoinsProps {
+  className?: string;
+}
+export default function AllCoins({ className = "" }: AllCoinsProps) {
   const coinsPerPage = 100;
 
   const [coins, setCoins] = useState<Coins[]>([]);
+  const [filteredCoins, setFilteredCoins] = useState<Coins[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -71,6 +76,7 @@ export default function AllCoins() {
 
       const data = await response.json();
       setCoins(data);
+      setFilteredCoins(data);
       setCurrentPage(page);
     } catch (error) {
       console.error("Error fetching coins:", error);
@@ -83,10 +89,24 @@ export default function AllCoins() {
     fetchTotalCoins();
     fetchCoins(1);
   }, []);
-
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+    const filteredCoins = coins.filter((coin) => {
+      return (
+        coin.name.toLowerCase().includes(term.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(term.toLowerCase())
+      );
+    });
+    setFilteredCoins(filteredCoins);
+    setTotalPages(Math.ceil(filteredCoins.length / coinsPerPage));
+    setCurrentPage(1);
+  };
   return (
     <div>
-      <div className="w-full text-white bg-[#1a1b2f] bg-opacity-10 border-[#2a262653] border rounded-xl shadow-lg">
+      <div className="w-full">
+        <SearchBar searchTerm={searchTerm} onSearchTerm={handleSearch} />
+      </div>
+      <div className={className}>
         <Table>
           <thead>
             <TableRow>
@@ -100,7 +120,7 @@ export default function AllCoins() {
             </TableRow>
           </thead>
           <TableBody>
-            {coins.map((coin) => (
+            {filteredCoins.map((coin) => (
               <TableRow key={coin.id}>
                 <TableCell>{coin.market_cap_rank}</TableCell>
                 <TableCell className="flex items-center gap-2">
